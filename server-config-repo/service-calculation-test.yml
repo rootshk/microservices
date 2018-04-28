@@ -5,3 +5,4 @@ config:
 
 app:
   profile: test
+  hello: 怕是个智障噢
