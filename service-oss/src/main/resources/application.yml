@@ -1,0 +1,19 @@
+server:
+  port: 8000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1000/eureka/
+spring:
+  application:
+    name: service-oss
+
+#oss初始化配置
+oss:
+  protocol: https
+  endpoint: oss-cn-shenzhen.aliyuncs.com
+  accessKeyId: LTAI477veFM9CojO
+  accessKeySecret: Qez0lUQv9IWgD54tnkxNC6iiWgr2AO
+  bucketName: fulucanag-oss
+  securityToken: aaaabbbbb
+  key: a.other

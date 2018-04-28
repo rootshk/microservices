@@ -1,0 +1,29 @@
+server:
+  port: 3000
+
+spring:
+  application:
+    name: service-calculation
+  cloud:
+    config:
+      uri: http://${config.server.ip}:${config.server.port}
+      name: service-calculation
+      profile: ${app.profile:test}
+
+#service discovery url
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1000/eureka/
+
+#datasource config
+jdbc:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://39.108.84.54:3066/cloud?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8
+  username: root
+  password: judeli123!@#
+
+#mybatis config
+mybatis:
+  typeAliasesPackage: org.cloud.demo.service.model
+  mapperLocations: classpath:mapper/*.xml

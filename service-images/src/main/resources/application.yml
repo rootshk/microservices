@@ -1,0 +1,16 @@
+#负载均衡-服务消费者Feign
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1000/eureka/
+server:
+  port: 2000
+spring:
+  application:
+    name: service-images
+  #Redis配置
+  redis:
+    database: 0
+    host: 192.168.0.105
+    port: 6379
+    password:

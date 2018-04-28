@@ -1,0 +1,7 @@
+config:
+  server:
+    ip: 127.0.0.1
+    port: 1000
+
+app:
+  profile: test
