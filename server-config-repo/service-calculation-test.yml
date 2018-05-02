@@ -3,6 +3,13 @@ config:
     ip: 127.0.0.1
     port: 1100
 
+mysql:
+  ip: 39.108.84.54
+  port: 3066
+  database: cloud
+  username: root
+  password: judeli123!@#
+
 app:
   profile: test
   hello: 怕是个智障噢

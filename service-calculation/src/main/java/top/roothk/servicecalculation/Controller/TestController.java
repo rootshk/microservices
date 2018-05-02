@@ -28,7 +28,7 @@ public class TestController {
     @Value("${app.hello}")
     private String hello;
 
-    @GetMapping(value = "/hello")
+    @GetMapping(value = "hello")
     public String test(){
         return hello;
     }

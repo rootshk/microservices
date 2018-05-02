@@ -5,7 +5,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1000/eureka/
+      defaultZone: http://aliyun.roothk.com:1000/eureka/
 
 #datasource config
 spring:
@@ -13,9 +13,9 @@ spring:
     name: service-calculation
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://39.108.84.54:3066/cloud?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8&useSSL=true
-    username: root
-    password: judeli123!@#
+    url: jdbc:mysql://${mysql.ip}:${mysql.port}/${mysql.database}?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8&useSSL=true
+    username: ${mysql.username}
+    password: ${mysql.password}
 
 #mybatis config
 mybatis:
