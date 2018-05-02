@@ -11,9 +11,9 @@ spring:
     name: service-calculation
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://39.108.84.54:3066/cloud?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8&useSSL=true
-    username: root
-    password: judeli123!@#
+    url: jdbc:mysql://${app.datasource.ip}:${app.datasource.port}/${app.datasource.datebase}?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8&useSSL=true
+    username: ${app.datasource.username}
+    password: ${app.datasource.password}
 
 #mybatis config
 mybatis:

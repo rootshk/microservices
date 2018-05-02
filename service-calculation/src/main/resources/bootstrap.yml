@@ -11,10 +11,8 @@ spring:
     name: service-calculation
   cloud:
     config:
-      label: master
-      profile: test
       discovery:
         enabled: true
         serviceId: server-config
-
-
+      label: master
+      profile: test

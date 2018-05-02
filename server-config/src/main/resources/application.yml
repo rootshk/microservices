@@ -14,7 +14,7 @@ spring:
       server:
         git:
           #配置服务去哪里找配置文件
-          uri: https://github.com/rootshk/microservices.git
+          uri: https://github.com/rootshk/microservices/
           #去哪个文件夹找配置文件
           searchPaths: server-config-repo
 #          username: 123456
