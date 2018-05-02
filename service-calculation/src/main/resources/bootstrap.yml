@@ -1,11 +1,14 @@
 server:
   port: 3000
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://aliyun.roothk.top:1000/eureka/
+
 spring:
   application:
     name: service-calculation
-
-spring:
   cloud:
     config:
       label: master
@@ -14,7 +17,4 @@ spring:
         enabled: true
         serviceId: server-config
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://aliyun.roothk.top:1000/eureka/
+
