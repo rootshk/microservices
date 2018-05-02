@@ -3,7 +3,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://aliyun.roothk.top:1000/eureka/
+      defaultZone: http://ubuntu16.roothk.top:1000/eureka/
 spring:
   application:
     name: service-oss
