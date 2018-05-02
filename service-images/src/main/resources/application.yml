@@ -11,6 +11,6 @@ spring:
   #Redis配置
   redis:
     database: 0
-    host: localhost
+    host: ubuntu16.roothk.top
     port: 6379
     password: aaabbb123456
