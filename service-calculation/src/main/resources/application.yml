@@ -25,5 +25,5 @@ jdbc:
 
 #mybatis config
 mybatis:
-  typeAliasesPackage: org.cloud.demo.service.model
-  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: top.roothk.servicecalculation.Service.Model
+  mapperLocations: top/roothk/servicecalculation/**/**/*Mapper.xml

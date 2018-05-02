@@ -1,0 +1,18 @@
+server:
+  # 端口
+  port: 1100
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1000/eureka/
+spring:
+  application:
+    name: server-config
+  cloud:
+    config:
+      server:
+        git:
+          #配置服务去哪里找配置文件
+          uri: https://github.com/rootshk/microservices.git
+          #去哪个文件夹找配置文件
+          searchPaths: server-config-repo
