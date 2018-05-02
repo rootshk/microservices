@@ -5,7 +5,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://aliyun.roothk.com:1000/eureka/
+      defaultZone: http://aliyun.roothk.top:1000/eureka/
 
 #datasource config
 spring:

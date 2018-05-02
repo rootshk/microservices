@@ -2,7 +2,7 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:1000/eureka/
+      defaultZone: http://aliyun.roothk.top:1000/eureka/
 server:
   port: 2000
 spring:
