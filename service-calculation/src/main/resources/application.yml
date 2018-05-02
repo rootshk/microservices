@@ -1,15 +1,6 @@
 server:
   port: 3000
 
-spring:
-  application:
-    name: service-calculation
-  cloud:
-    config:
-      uri: http://${config.server.ip}:${config.server.port}
-      name: service-calculation
-      profile: ${app.profile:test}
-
 #service discovery url
 eureka:
   client:
@@ -17,13 +8,15 @@ eureka:
       defaultZone: http://localhost:1000/eureka/
 
 #datasource config
-jdbc:
-  driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:mysql://39.108.84.54:3066/cloud?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8
-  username: root
-  password: judeli123!@#
+spring:
+  application:
+    name: service-calculation
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.108.84.54:3066/cloud?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8&useSSL=true
+    username: root
+    password: judeli123!@#
 
 #mybatis config
 mybatis:
   typeAliasesPackage: top.roothk.servicecalculation.Service.Model
-  mapperLocations: top/roothk/servicecalculation/**/**/*Mapper.xml

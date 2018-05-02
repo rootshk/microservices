@@ -1,5 +1,6 @@
 package top.roothk.servicecalculation;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +10,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableEurekaClient
 @EnableAutoConfiguration
 @SpringBootApplication
-//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+@MapperScan("top.roothk.servicecalculation.Service.Mapper")
 public class ServiceCalculationApplication {
 
     public static void main(String[] args) {

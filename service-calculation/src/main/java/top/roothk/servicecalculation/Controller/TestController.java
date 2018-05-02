@@ -2,27 +2,34 @@ package top.roothk.servicecalculation.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
-import top.roothk.servicecalculation.Service.Model.OrderCalculation;
-import top.roothk.servicecalculation.Service.OrderCalculationService;
+import top.roothk.servicecalculation.Service.Dao.OrderCalculation;
+import top.roothk.servicecalculation.Service.Mapper.OrderCalculationMapper;
+
+import java.util.List;
 
 @RestController
-@RefreshScope
+@RequestMapping(value = "/")
 public class TestController {
 
     @Autowired
-    private OrderCalculationService orderCalculationService;
+    OrderCalculationMapper orderCalculationMapper;
 
-    @RequestMapping(value="/add",method=RequestMethod.POST)
-    @ResponseBody
-    public int addUser(@RequestBody OrderCalculation user){
-        return orderCalculationService.addUser(user);
+    @GetMapping(value="getId")
+    public OrderCalculation getById(){
+        return orderCalculationMapper.getId(1L);
     }
 
-    @RequestMapping(value="/get",method=RequestMethod.GET)
-    @ResponseBody
-    public OrderCalculation getUserById(){
-        return orderCalculationService.getUserById(1L);
+    @GetMapping(value="getAll")
+    public List<OrderCalculation> getAll(){
+        return orderCalculationMapper.getAll();
+    }
+
+    @Value("${app.hello}")
+    private String hello;
+
+    @GetMapping(value = "/hello")
+    public String test(){
+        return hello;
     }
 }

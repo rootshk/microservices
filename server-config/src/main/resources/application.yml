@@ -10,9 +10,12 @@ spring:
     name: server-config
   cloud:
     config:
+      label: master
       server:
         git:
           #配置服务去哪里找配置文件
           uri: https://github.com/rootshk/microservices.git
           #去哪个文件夹找配置文件
           searchPaths: server-config-repo
+#          username: 123456
+#          password: 123456
