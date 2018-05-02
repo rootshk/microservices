@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/")
-public class TestController { 
+public class TestController {
 
     @Autowired
     OrderCalculationMapper orderCalculationMapper;
