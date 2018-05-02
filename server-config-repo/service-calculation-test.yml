@@ -4,5 +4,11 @@ config:
     port: 1100
 
 app:
+  datasource:
+    ip: 39.108.84.54
+    port: 3066
+    datebase: cloud
+    username: root
+    password: judeli123!@#
   profile: test
   hello: 怕是个智障噢
