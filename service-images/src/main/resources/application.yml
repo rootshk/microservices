@@ -13,4 +13,4 @@ spring:
     database: 0
     host: ubuntu16.roothk.top
     port: 6379
-    password: aaabbb123456
+    password:
