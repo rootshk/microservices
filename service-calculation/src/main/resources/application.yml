@@ -1,14 +1,4 @@
-server:
-  port: 3000
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://ubuntu16.roothk.top:1000/eureka/
-
 spring:
-  application:
-    name: service-calculation
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://${app.datasource.ip}:${app.datasource.port}/${app.datasource.datebase}?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8&useSSL=true
