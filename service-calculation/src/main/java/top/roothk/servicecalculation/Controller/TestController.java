@@ -2,12 +2,14 @@ package top.roothk.servicecalculation.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import top.roothk.servicecalculation.Service.Dao.OrderCalculation;
 import top.roothk.servicecalculation.Service.Mapper.OrderCalculationMapper;
 
 import java.util.List;
 
+@RefreshScope
 @RestController
 @RequestMapping(value = "/")
 public class TestController {
