@@ -54,11 +54,13 @@ public class KDController {
             return "单号为空";
         }
         //redis有没有已查询过的物流信息，默认为一小时更新一次
+        //有可能出现空指针
         is = stringRedisTemplate.hasKey(code+number);
         if(is){
             return stringRedisTemplate.opsForValue().get(code+number);
         }
         JSONArray jsonArray = JSONArray.parseArray(stringRedisTemplate.opsForValue().get("kdConfig"));
+        //随机使用API密钥分摊接口调用次数
         Random random = new Random();
         Integer in = random.nextInt(jsonArray.size());
         KdniaoTrackQueryAPI api = new KdniaoTrackQueryAPI(jsonArray.getJSONObject(in));
