@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import top.roothk.serviceweather.Service.SelectWeatherService;
+import top.roothk.serviceweather.Utils.HttpUtils;
 import top.roothk.serviceweather.Utils.IPUtils;
 import top.roothk.serviceweather.Utils.JSONUtils;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping(value = "/")
@@ -40,6 +43,18 @@ public class WeatherController {
 //        }
 //        return false;
 //    }
+
+    @GetMapping(value = "ip")
+    public JSONObject getIP(HttpServletRequest request){
+        HttpUtils ip = new HttpUtils();
+        String ips = null;
+        try {
+            ips = ip.getIpAddr(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonUtils.getRoot(0,"IP",ips);
+    }
 
     @GetMapping(value = "query")
     public JSONObject getToIP(@RequestParam(value = "ip",required = false,defaultValue = "ip") String ip,

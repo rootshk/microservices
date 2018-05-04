@@ -6,7 +6,7 @@ spring:
     #Redis配置
   redis:
     database: 2
-    host: ubuntu16.roothk.top
+    host: aliyun-intranet.roothk.top
     port: 6379
     password:
 #    jedis:
@@ -24,7 +24,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://ubuntu16.roothk.top:1000/eureka/
+      defaultZone: http://aliyun-intranet.roothk.top:1000/eureka/
 #roothk:
 #  eid: 1338587
 #  key: fe843159-ae88-4d02-bf15-24ab35249249

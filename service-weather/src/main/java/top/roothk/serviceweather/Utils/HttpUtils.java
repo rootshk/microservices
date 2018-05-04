@@ -1,5 +1,6 @@
 package top.roothk.serviceweather.Utils;
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -11,6 +12,7 @@ import java.util.Map;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
@@ -31,6 +33,31 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 public class HttpUtils {
+
+    /**
+     * 获得用户真实IP
+     *
+     * @param request 请求对象
+     * @return 真实IP地址
+     */
+    public static String getIpAddr(HttpServletRequest request) throws Exception{
+        String ip = request.getHeader("X-Real-IP");
+        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+            return ip;
+        }
+        ip = request.getHeader("X-Forwarded-For");
+        if (!StringUtils.isBlank(ip) && !"unknown".equalsIgnoreCase(ip)) {
+            // 多次反向代理后会有多个IP值，第一个为真实IP。
+            int index = ip.indexOf(',');
+            if (index != -1) {
+                return ip.substring(0, index);
+            } else {
+                return ip;
+            }
+        } else {
+            return request.getRemoteAddr();
+        }
+    }
 
     /**
      * get
