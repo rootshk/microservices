@@ -31,11 +31,15 @@ public class OnConfig implements CommandLineRunner {
             a.put("eid", "1338587");
             a.put("key", "fe843159-ae88-4d02-bf15-24ab35249249");
             a.put("url", "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx");
+            a.put("100key", "3bef603438b72b63");
+            a.put("100url", "http://api.kuaidi100.com/api");
             JSONObject b = new JSONObject();
             b.put("id", "roothk2");
             b.put("eid", "1338587");
             b.put("key", "fe843159-ae88-4d02-bf15-24ab35249249");
             b.put("url", "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx");
+            b.put("100key", "3bef603438b72b63");
+            b.put("100url", "http://api.kuaidi100.com/api");
             JSONArray jsonArray = new JSONArray();
             jsonArray.add(a);
             jsonArray.add(b);

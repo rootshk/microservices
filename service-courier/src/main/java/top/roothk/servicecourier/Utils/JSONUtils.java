@@ -23,4 +23,12 @@ public class JSONUtils {
         jsonObject.put("data", data);
         return jsonObject;
     }
+
+    public JSONObject getRootObj(int code, String message, Object data) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("error_code", code);
+        jsonObject.put("message", message);
+        jsonObject.put("data", data);
+        return jsonObject;
+    }
 }
