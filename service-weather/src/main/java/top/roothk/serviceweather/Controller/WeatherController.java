@@ -53,10 +53,10 @@ public class WeatherController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return jsonUtils.getRoot(0,"IP",ips);
+        return jsonUtils.getRoot(0,"ok",ips);
     }
 
-    @GetMapping(value = "query")
+    @GetMapping(value = "query", produces = "application/json;charset=UTF-8")
     public JSONObject getToIP(@RequestParam(value = "ip",required = false,defaultValue = "ip") String ip,
                               @RequestParam(value = "city",required = false,defaultValue = "city") String city,
                               @RequestParam(value = "cityid",required = false,defaultValue = "cityid") String cityCode) {
@@ -90,6 +90,8 @@ public class WeatherController {
             } else {
                 return jsonUtils.getRoot(1,"错误，该城市代码非纯数字",cityCode);
             }
+        } else {
+            return jsonUtils.getRoot(1,"错误，未输入任何查询条件",null);
         }
 //        return jsonUtils.getRoot(1,"错误，未填入任何符合的条件参数",city);
 
