@@ -16,14 +16,11 @@ import java.net.URLConnection;
 @Component
 public class KD100QueryAPI {
 
-    public String get(JSONObject jsonObject,String com, String nu) {
-        String uri = jsonObject.getString("100url");
-        String key = jsonObject.getString("100key");
+    public String get(String uri) {
         RestTemplate restTemplate = new RestTemplate();
 //            uri + "?id=" + key + "&com=" + com + "&nu=" + nu + "&order=desc")
 
-        String msg = restTemplate.getForObject(
-                "{url}?id={key}&com={com}&nu={nu}&order=desc", String.class,uri, key, com, nu);
+        String msg = restTemplate.getForObject(uri,String.class);
 //        String msg = restTemplate.getForObject(
 //                "http://api.kuaidi100.com/api?id=3bef603438b72b63&com=wanxiangwuliu&nu=604018966088750", String.class);
         return msg;

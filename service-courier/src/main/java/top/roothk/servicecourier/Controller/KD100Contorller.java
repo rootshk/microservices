@@ -30,7 +30,7 @@ public class KD100Contorller {
      * @param number
      * @return
      */
-    @GetMapping(value = "/100/query")
+    @GetMapping(value = "/100/query",produces = "application/json;charset=UTF-8")
     public JSONObject get100(@RequestParam(value = "code") String code, @RequestParam(value = "number") String number) {
         if(null == number || null == code){
             return jsonUtils.getRoot(1,"单号或快递公司代码为空",null);
@@ -47,7 +47,11 @@ public class KD100Contorller {
         Integer in = random.nextInt(jsonArray.size());
         KD100QueryAPI api = new KD100QueryAPI();
         try {
-            String result = api.get(jsonArray.getJSONObject(in),code, number);
+            JSONObject jsonObject = jsonArray.getJSONObject(in);
+            String uri = jsonObject.getString("100url");
+            String key = jsonObject.getString("100key");
+            String url = uri + "?id=" + key + "&com=" + code + "&nu=" + number + "&order=desc";
+            String result = api.get(url);
             stringRedisTemplate.opsForValue().set("100:" + code+number,result,60,TimeUnit.MINUTES);//设置为有效期60分钟
             return jsonUtils.getRoot(0,"ok",JSONObject.parseObject(result));
         } catch (Exception e) {

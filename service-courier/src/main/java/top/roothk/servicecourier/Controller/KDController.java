@@ -25,7 +25,7 @@ public class KDController {
     @Autowired
     JSONUtils jsonUtils;
 
-    @GetMapping(value = "/demo")
+    @GetMapping(value = "/demo", produces = "application/json;charset=UTF-8")
     public String demo() {
         JSONArray jsonArray = JSONArray.parseArray(stringRedisTemplate.opsForValue().get("kdConfig"));
         log.info("size = " + jsonArray.size());
@@ -50,7 +50,7 @@ public class KDController {
      * @param number
      * @return
      */
-    @GetMapping(value = "/kdn/query")
+    @GetMapping(value = "/kdn/query", produces = "application/json;charset=UTF-8")
     public JSONObject get(@RequestParam(value = "code") String code, @RequestParam(value = "number") String number) {
         //转大写
         code = code.toUpperCase();
@@ -90,7 +90,7 @@ public class KDController {
      * @param number
      * @return
      */
-    @GetMapping(value = "/kdn/query/flc")
+    @GetMapping(value = "/kdn/query/flc", produces = "application/json;charset=UTF-8")
     public JSONObject getFlc(@RequestParam(value = "code") String code,
                              @RequestParam(value = "number") String number) {
         //转大写
