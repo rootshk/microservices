@@ -11,6 +11,7 @@ import top.roothk.serviceweather.Service.SelectWeatherService;
 import top.roothk.serviceweather.Utils.HttpUtils;
 import top.roothk.serviceweather.Utils.IPUtils;
 import top.roothk.serviceweather.Utils.JSONUtils;
+import top.roothk.serviceweather.Utils.SMSTimedPushUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,6 +30,9 @@ public class WeatherController {
 
     @Autowired
     SelectWeatherService selectWeatherMsg;
+
+    @Autowired
+    SMSTimedPushUtils smsTimedPushUtils;
 
     @GetMapping(value = "demo")
     public String demo() {
@@ -97,5 +101,11 @@ public class WeatherController {
 
         //正式开始！！！
         return selectWeatherMsg.selectWeatherMsg(select,code);
+    }
+
+    @GetMapping(value = "sms", produces = "application/json;charset=UTF-8")
+    public JSONObject sms(){
+        smsTimedPushUtils.SMSTimedPush();
+        return jsonUtils.getRoot(1,"error",null);
     }
 }

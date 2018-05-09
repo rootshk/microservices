@@ -42,6 +42,17 @@
 			<artifactId>fastjson</artifactId>
 			<version>RELEASE</version>
 		</dependency>
+		<!--aliyun短信服务SDK-->
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-core</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 		<!--@Slf4jy依赖-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

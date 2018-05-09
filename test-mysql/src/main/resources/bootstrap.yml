@@ -1,0 +1,18 @@
+server:
+  port: 3000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ubuntu16.roothk.top:1000/eureka/
+
+spring:
+  application:
+    name: service-calculation
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: server-config
+      label: master
+      profile: test

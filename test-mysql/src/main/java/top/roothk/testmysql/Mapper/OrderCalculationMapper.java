@@ -1,4 +1,4 @@
-package top.roothk.servicecalculation.Service.Mapper;
+package top.roothk.testmysql.Mapper;
 
 import org.apache.ibatis.annotations.*;
 import top.roothk.servicecalculation.Service.Dao.OrderCalculation;

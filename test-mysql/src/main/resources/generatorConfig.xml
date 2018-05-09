@@ -15,9 +15,9 @@
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.0.114:3066/shopxxb2c?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"
-                        userId="shopxxb2c"
-                        password="root">
+                        connectionURL="jdbc:mysql://39.108.84.54:3066/cloud?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=true"
+                        userId="root"
+                        password="judeli123!@#">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -25,13 +25,13 @@
         </javaTypeResolver>
 
         <!-- 数据表对应的model层  -->
-        <javaModelGenerator targetPackage="top.roothk.servicecalculation.Service.Model" targetProject="src">
+        <javaModelGenerator targetPackage="top.roothk.servicecalculation.Service.Model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- sql mapper 映射配置文件 -->
-        <sqlMapGenerator targetPackage="top.roothk.servicecalculation.Service.Mapper"  targetProject="src">
+        <sqlMapGenerator targetPackage="top.roothk.servicecalculation.Service.Mapper"  targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 

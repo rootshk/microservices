@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${app.datasource.ip}:${app.datasource.port}/${app.datasource.datebase}?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=utf-8&useSSL=true
+    username: ${app.datasource.username}
+    password: ${app.datasource.password}
+
+#mybatis config
+mybatis:
+  typeAliasesPackage: top.roothk.servicecalculation.Service.Model
