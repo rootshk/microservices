@@ -2,20 +2,15 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://ubuntu16.roothk.top:1000/eureka/
+      defaultZone: http://aliyun.roothk.top:1000/eureka/
 server:
   port: 2000
 spring:
   application:
     name: service-images
-  #Redis配置
+#  Redis配置
   redis:
     database: 0
-    host: ubuntu16.roothk.top
+    host: 192.168.0.221
     port: 6379
     password:
-
-roothk:
-  config:
-    #是否开启redis缓存
-    redisDemo: true

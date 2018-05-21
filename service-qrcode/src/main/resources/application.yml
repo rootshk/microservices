@@ -6,4 +6,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://ubuntu16.roothk.top:1000/eureka/
+      defaultZone: http://aliyun.roothk.top:1000/eureka/

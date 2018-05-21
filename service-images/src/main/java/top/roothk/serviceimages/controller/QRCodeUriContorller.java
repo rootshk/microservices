@@ -44,9 +44,6 @@ public class QRCodeUriContorller {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
-    @Value("${roothk.config.redisDemo}")
-    Boolean redisDemo;
-
     /**
      * 获得二维码图片的OSS地址 通过传入地址
      * @return
@@ -55,12 +52,7 @@ public class QRCodeUriContorller {
     public JSONObject getQRCodeImgUri(@PathVariable("uri") String uri) {
         String ord = uri;
 
-        Boolean is = false;
-        //开启redis缓存
-        if(redisDemo){
-            //判断对应的UrKEY是否存在
-            is = stringRedisTemplate.opsForHash().hasKey("otherUri",ord);
-        }
+        Boolean is = stringRedisTemplate.opsForHash().hasKey("otherUri",ord);
         if(is){
             uri = (String) stringRedisTemplate.opsForHash().get("otherUri",ord);
         } else {
@@ -82,7 +74,7 @@ public class QRCodeUriContorller {
                 if(oss.getInteger("error_code") == 0){//成功
                     //获得oss地址
                     uri = oss.getString("data");
-                    if(redisDemo){stringRedisTemplate.opsForHash().put("other",ord,uri);}
+                    stringRedisTemplate.opsForHash().put("other",ord,uri);
                 } else {
                     return jsonUtils.getRoot(1,"错误，保存到OSS失败",jsonObject);
                 }
@@ -126,11 +118,7 @@ public class QRCodeUriContorller {
         log.info("---MD5--- >> " + md5 + " << ---MD5---");
 
         String uri = "";
-        Boolean is = false;
-        //开启redis缓存
-        if(redisDemo){
-             is = stringRedisTemplate.opsForHash().hasKey("imgJSON",md5);
-        }
+        Boolean is = stringRedisTemplate.opsForHash().hasKey("imgJSON",md5);
         //是否已生成过该二维码
         if(is){//存在
             log.info("---------- >> Redis存在该图片 << ----------");
@@ -158,7 +146,7 @@ public class QRCodeUriContorller {
                 if(ossOut.getInteger("error_code") == 0){//成功
                     //获得oss地址
                     uri = ossOut.getString("data");
-                    if(redisDemo){ stringRedisTemplate.opsForHash().put("imgJSON",md5,uri);}
+                    stringRedisTemplate.opsForHash().put("imgJSON",md5,uri);
                 } else {
                     return jsonUtils.getRoot(1,"错误，保存到OSS失败",jsonObject);
                 }
