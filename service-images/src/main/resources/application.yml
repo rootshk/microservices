@@ -14,3 +14,8 @@ spring:
     host: ubuntu16.roothk.top
     port: 6379
     password:
+
+roothk:
+  config:
+    #是否开启redis缓存
+    redisDemo: true

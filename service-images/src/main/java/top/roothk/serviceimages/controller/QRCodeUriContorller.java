@@ -3,6 +3,7 @@ package top.roothk.serviceimages.controller;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +43,10 @@ public class QRCodeUriContorller {
 
     @Autowired
     StringRedisTemplate stringRedisTemplate;
+
+    @Value("${roothk.config.redisDemo}")
+    Boolean redisDemo;
+
     /**
      * 获得二维码图片的OSS地址 通过传入地址
      * @return
@@ -49,8 +54,13 @@ public class QRCodeUriContorller {
     @GetMapping(value = "/uri/{uri}")
     public JSONObject getQRCodeImgUri(@PathVariable("uri") String uri) {
         String ord = uri;
-        //判断对应的UrKEY是否存在
-        boolean is = stringRedisTemplate.opsForHash().hasKey("otherUri",ord);
+
+        Boolean is = false;
+        //开启redis缓存
+        if(redisDemo){
+            //判断对应的UrKEY是否存在
+            is = stringRedisTemplate.opsForHash().hasKey("otherUri",ord);
+        }
         if(is){
             uri = (String) stringRedisTemplate.opsForHash().get("otherUri",ord);
         } else {
@@ -72,7 +82,7 @@ public class QRCodeUriContorller {
                 if(oss.getInteger("error_code") == 0){//成功
                     //获得oss地址
                     uri = oss.getString("data");
-                    stringRedisTemplate.opsForHash().put("other",ord,uri);
+                    if(redisDemo){stringRedisTemplate.opsForHash().put("other",ord,uri);}
                 } else {
                     return jsonUtils.getRoot(1,"错误，保存到OSS失败",jsonObject);
                 }
@@ -116,7 +126,11 @@ public class QRCodeUriContorller {
         log.info("---MD5--- >> " + md5 + " << ---MD5---");
 
         String uri = "";
-        boolean is = stringRedisTemplate.opsForHash().hasKey("imgJSON",md5);
+        Boolean is = false;
+        //开启redis缓存
+        if(redisDemo){
+             is = stringRedisTemplate.opsForHash().hasKey("imgJSON",md5);
+        }
         //是否已生成过该二维码
         if(is){//存在
             log.info("---------- >> Redis存在该图片 << ----------");
@@ -144,7 +158,7 @@ public class QRCodeUriContorller {
                 if(ossOut.getInteger("error_code") == 0){//成功
                     //获得oss地址
                     uri = ossOut.getString("data");
-                    stringRedisTemplate.opsForHash().put("imgJSON",md5,uri);
+                    if(redisDemo){ stringRedisTemplate.opsForHash().put("imgJSON",md5,uri);}
                 } else {
                     return jsonUtils.getRoot(1,"错误，保存到OSS失败",jsonObject);
                 }
