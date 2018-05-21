@@ -72,6 +72,7 @@ public class QRCodeController {
 
     /**
      * 网页端输出二维码 GET方法
+     * 返回程序初始化的二维码图片
      *
      * @param response 输出图片
      * @return

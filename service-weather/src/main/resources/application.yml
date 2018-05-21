@@ -25,7 +25,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://ubuntu16.roothk.top:1000/eureka/
+      defaultZone: http://aliyun.roothk.top:1000/eureka/
 #roothk:
 #  eid: 1338587
 #  key: fe843159-ae88-4d02-bf15-24ab35249249

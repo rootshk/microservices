@@ -22,6 +22,8 @@ import java.io.OutputStream;
  * 用于获得二维码图片
  */
 @Slf4j
+//跨域
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/qrCode")
 public class QRCodeUriContorller {
@@ -49,6 +51,7 @@ public class QRCodeUriContorller {
      * @return
      */
     @GetMapping(value = "/uri/{uri}")
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     public JSONObject getQRCodeImgUri(@PathVariable("uri") String uri) {
         String ord = uri;
 
@@ -112,6 +115,7 @@ public class QRCodeUriContorller {
      * @return
      */
     @PostMapping(value = "/uri")
+    @CrossOrigin(methods = { RequestMethod.POST }, origins = "*")
     public JSONObject getQRcodeImgUri(@RequestBody JSONObject jsonObject){
         String md5 = DigestUtils.md5DigestAsHex(jsonObject.toString().getBytes());
 
@@ -160,6 +164,7 @@ public class QRCodeUriContorller {
      * @return
      */
     @GetMapping(value = "/img")
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     public String getQRCodeImg(HttpServletResponse response) throws IOException {
         String base64 = qrCodeServiceFeign.getQRCode();
         BufferedImage image = imagebase64Utils.base64StringToImage(base64);
@@ -182,6 +187,7 @@ public class QRCodeUriContorller {
      * @throws IOException
      */
     @PostMapping(value = "/img")
+    @CrossOrigin(methods = { RequestMethod.POST }, origins = "*")
     public String getQRCodeImg(@RequestBody JSONObject jsonObject, HttpServletResponse response) throws IOException {
         String base64 = qrCodeServiceFeign.getQRCode1(jsonObject);
         BufferedImage image = imagebase64Utils.base64StringToImage(base64);

@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.aliyuncs.exceptions.ClientException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.roothk.serviceweather.Service.SelectWeatherService;
 import top.roothk.serviceweather.Utils.HttpUtils;
 import top.roothk.serviceweather.Utils.IPUtils;
@@ -36,6 +33,7 @@ public class WeatherController {
     SMSTimedPushUtils smsTimedPushUtils;
 
     @GetMapping(value = "demo")
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     public String demo() {
         return "demo";
     }
@@ -49,6 +47,7 @@ public class WeatherController {
 //        return false;
 //    }
 
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     @GetMapping(value = "ip")
     public JSONObject getIP(HttpServletRequest request){
         HttpUtils ip = new HttpUtils();
@@ -61,6 +60,7 @@ public class WeatherController {
         return jsonUtils.getRoot(0,"ok",ips);
     }
 
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     @GetMapping(value = "query", produces = "application/json;charset=UTF-8")
     public JSONObject getToIP(@RequestParam(value = "ip",required = false,defaultValue = "ip") String ip,
                               @RequestParam(value = "city",required = false,defaultValue = "city") String city,
@@ -104,6 +104,7 @@ public class WeatherController {
         return selectWeatherMsg.selectWeatherMsg(select,code);
     }
 
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     @GetMapping(value = "sms", produces = "application/json;charset=UTF-8")
     public JSONObject sms(){
         String s = null;
