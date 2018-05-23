@@ -46,9 +46,8 @@ public class WeatherController {
 //        }
 //        return false;
 //    }
-
+    @GetMapping(value = "ip", produces = "application/json;charset=UTF-8")
     @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
-    @GetMapping(value = "ip")
     public JSONObject getIP(HttpServletRequest request){
         HttpUtils ip = new HttpUtils();
         String ips = null;
