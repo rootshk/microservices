@@ -1,1 +1,10 @@
 .idea/
+service-calculation/target/
+service-images/target/
+service-oss/target/
+service-qrcode/target/
+service-weather/target/
+service-courier/target/
+server-eureka/target/
+server-config/target/
+*.iml
