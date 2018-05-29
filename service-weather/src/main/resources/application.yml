@@ -1,5 +1,9 @@
 server:
   port: 7700
+  ssl:
+    key-store: classpath:ssl/roothk_top.jks
+    key-store-password: aaabbb123456
+    key-password: aaabbb123456
 spring:
   application:
     name: service-weather
