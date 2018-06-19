@@ -29,22 +29,22 @@ import java.io.OutputStream;
 public class QRCodeUriContorller {
 
     @Autowired
-    QRCodeServiceFeign qrCodeServiceFeign;
+    private QRCodeServiceFeign qrCodeServiceFeign;
 
     @Autowired
-    OSSServiceFeign ossServiceFeign;
+    private OSSServiceFeign ossServiceFeign;
 
     @Autowired
-    Imagebase64Utils imagebase64Utils;
+    private Imagebase64Utils imagebase64Utils;
 
     @Autowired
-    JSONUtils jsonUtils;
+    private JSONUtils jsonUtils;
 
     @Autowired
-    DataConversionUtils dataConversionUtils;
+    private DataConversionUtils dataConversionUtils;
 
     @Autowired
-    StringRedisTemplate stringRedisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * 获得二维码图片的OSS地址 通过传入地址
