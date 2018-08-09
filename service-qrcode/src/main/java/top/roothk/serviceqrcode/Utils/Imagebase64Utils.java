@@ -26,7 +26,7 @@ public class Imagebase64Utils {
     public static String getImageBinary(BufferedImage bi) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "jpg", baos);
+            ImageIO.write(bi, "png", baos);
             byte[] bytes = baos.toByteArray();
             return encoder.encodeBuffer(bytes).trim();
         } catch (IOException e) {

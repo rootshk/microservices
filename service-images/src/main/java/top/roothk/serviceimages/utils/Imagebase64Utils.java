@@ -23,7 +23,7 @@ public class Imagebase64Utils {
         try {
             BASE64Encoder encoder = new BASE64Encoder();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(bi, "jpg", baos);
+            ImageIO.write(bi, "png", baos);
             byte[] bytes = baos.toByteArray();
             return encoder.encodeBuffer(bytes).trim();
         } catch (IOException e) {
