@@ -169,6 +169,7 @@ public class QRCodeController {
      * @return 返回输入地址生产的二维码
      */
     @GetMapping(value = "service/qrCode/{uri}")
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     public String getQRCodeGet(@PathVariable("uri") String uri,
                                @RequestParam(value = "f", defaultValue = "PNG") String f,
                                @RequestParam(value = "w", defaultValue = "300") Integer w,
@@ -187,6 +188,7 @@ public class QRCodeController {
      * @return 返回默认的二维码
      */
     @GetMapping(value = "service/qrCode")
+    @CrossOrigin(methods = { RequestMethod.GET }, origins = "*")
     public String getQRCodeByte() {
         log.info("------- INFO 访问 /service/qrCode 无参构造");
 
@@ -205,6 +207,7 @@ public class QRCodeController {
      * @return
      */
     @PostMapping(value = "service/qrCode")
+    @CrossOrigin(methods = { RequestMethod.POST }, origins = "*")
     public String getQRCodeByte(@RequestBody JSONObject jsonObject, HttpServletResponse response) {
         log.info("------- INFO 访问 /service/qrCode 有参构造");
 
