@@ -6,4 +6,4 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://aliyun.roothk.top:1000/eureka/
+      defaultZone: http://local.roothk.top:1000/eureka/
